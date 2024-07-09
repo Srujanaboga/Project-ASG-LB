@@ -1,22 +1,22 @@
 # Project-ASG-LB
-AutoScalling Group with Load balancer hosting webservers
+AutoScaling Group with Load Balancer | hosting webservers
 
-Tip
-
-For instance level | maitain SG - http, https
-
-SG | LB - http, https
-
-Maintain path, port details and package on a instance level examples: maintain pkg add path /index.html
+Tip 
+1) For instance level | maitain SG - http, https
+2) SG | LB - http, https
+3) Maintain path, port details and package on a instance level
+examples:
+maintain pkg 
+add path /index.html
 define port number 80
 Path in case of Winodows - C:/intetpub/wwwroot/index.html
 Path in case of Linux - var/www/html/index.html
 
-Create Auto Scaling Group
 
-Create Template | AMI - linux | Advanced >> Paste Script
-Example
-
+1) Create Auto Scaling Group
+2) Create Template | 
+AMI - linux | Advanced >> Paste Script
+```
 #!/bin/bash
 yum update -y
 yum install httpd -y
@@ -26,14 +26,18 @@ usermod -a -G apache ec2-user
 chmod 777 /var/www/html
 cd /var/www/html
 echo "<h1>hello from $(hostname -f) webserver</h1>">/var/www/html/index.html
+```
+3) Spot | On Demand
+4) Desired Capacity | Maximum Capacity | Minimum Capacity 
+5) Attach Load Balancer to ASG 
+6) EC2 Console >> 
+7) Copy public ip - webserver | Browser 
+8) Crosscheck LB | Target Group* | Healthy 
+9) Load Balancer in Web Browser 
+10) Delete ASG | (Instances will be delete automatically)
+11) Delete Target Group 
+12) Delete Load Balancer
 
-Spot | On Demand
-Desired Capacity | Maximum Capacity | Minimum Capacity
-Attach Load Balancer to ASG
-EC2 Console >>
-Copy public ip - webserver | Browser
-Crosscheck LB | Target Group* | Healthy
-Load Balancer in Web Browser
-Delete ASG | (Instances will be delete automatically)
-Delete Target Group
-Delete Load Balancer
+
+
+
